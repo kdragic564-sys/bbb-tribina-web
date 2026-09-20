@@ -3,126 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tribina Foto - BBB Galerija</title>
-    <!-- SimpleLightbox CSS za pop-up pregled -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f1115; color: #fff; padding: 20px; }
-        
-        header { text-align: center; padding: 20px 0 30px; }
-        h1 { font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; color: #3b82f6; }
-        p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+    <title>BBB TRIBINA | Matchday Ultras Photography</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
 
-        /* Gumbi za stadione */
-        .filter-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
-        .btn { background: #1f2937; color: #fff; border: 1px solid #374151; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn.active, .btn:hover { background: #3b82f6; border-color: #3b82f6; }
-
-        /* Mreža utakmica */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        
-        .match-card { background: #1a202c; border-radius: 12px; overflow: hidden; display: block; text-decoration: none; border: 1px solid #2d3748; transition: transform 0.2s; }
-        .match-card:hover { transform: translateY(-5px); }
-        .match-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-        .match-info { padding: 15px; }
-        .match-info h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
-        .match-info span { font-size: 0.85rem; color: #9ca3af; text-transform: uppercase; }
-
-        /* Sakrivene ostale fotke iz iste galerije za Lightbox */
-        .hidden-photos { display: none; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>TRIBINA FOTO</h1>
-        <p>Bad Blue Boys — Galerija po stadionima</p>
-    </header>
-
-    <!-- Navigacija po stadionima -->
-    <div class="filter-buttons">
-        <button class="btn active" onclick="filterStadion('all')">SVE</button>
-        <button class="btn" onclick="filterStadion('maksimir')">MAKSIMIR</button>
-        <button class="btn" onclick="filterStadion('poljud')">POLJUD</button>
-        <button class="btn" onclick="filterStadion('opus')">OPUS ARENA</button>
-    </div>
-
-    <!-- Mreža s utakmicama -->
-    <div class="gallery-grid">
-
-        <!-- UTAKMICA 1: MAKSIMIR -->
-        <div class="match-box maksimir">
-            <!-- Prva slika je naslovna fotka utakmice -->
-            <a href="slike/HJCA1E3XwAA3cO3.jpg" class="match-card match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 1">
-                <img src="slike/HJCA1E3XwAA3c03.jpg" alt="Dinamo - Hajduk">
-                <div class="match-info">
-                    <span>Stadion Maksimir</span>
-                    <h3>Dinamo - Hajduk (2:1)</h3>
-                </div>
-            </a>
-            <!-- Ostale fotke s te utakmice koje se otvaraju u Lightboxu (1, 2, 3...) -->
-            <div class="hidden-photos">
-                <a href="slike/maksimir1-2.jpg" class="match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 2"></a>
-                <a href="slike/maksimir1-3.jpg" class="match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 3"></a>
-            </div>
-        </div>
-
-        <!-- UTAKMICA 2: POLJUD -->
-        <div class="match-box poljud">
-            <a href="slike/poljud1-1.jpg" class="match-card match-gallery" data-lightbox="hajduk-dinamo" title="Hajduk - Dinamo | Slika 1">
-                <img src="slike/file_0000000088a871fd92cb9b4512ec1f07 (1).jpg" alt="Hajduk - Dinamo">
-                <div class="match-info">
-                    <span>Stadion Poljud</span>
-                    <h3>Hajduk - Dinamo (0:2)</h3>
-                </div>
-            </a>
-            <div class="hidden-photos">
-                <a href="slike/poljud1-2.jpg" class="match-gallery" data-lightbox="hajduk-dinamo" title="Hajduk - Dinamo | Slika 2"></a>
-            </div>
-        </div>
-
-        <!-- UTAKMICA 3: OPUS ARENA -->
-        <div class="match-box opus">
-            <a href="slike/opus1-1.jpg" class="match-card match-gallery" data-lightbox="osijek-dinamo" title="Osijek - Dinamo | Slika 1">
-                <img src="slike/opus1-1.jpg" alt="Osijek - Dinamo">
-                <div class="match-info">
-                    <span>Opus Arena</span>
-                    <h3>Osijek - Dinamo (1:3)</h3>
-                </div>
-            </a>
-            <div class="hidden-photos">
-                <a href="slike/opus1-2.jpg" class="match-gallery" data-lightbox="osijek-dinamo" title="Osijek - Dinamo | Slika 2"></a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Skripte za Lightbox i Filtriranje -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
     <script>
-        // Pokretanje Lightbox prikaza (prelistavanje 1, 2, 3...)
-        var lightbox = new SimpleLightbox('.match-gallery', {
-            captionsData: 'title',
-            captionDelay: 250
-        });
-
-        // Funkcija za filtriranje po stadionima
-        function filterStadion(stadion) {
-            var items = document.querySelectorAll('.match-box');
-            var buttons = document.querySelectorAll('.btn');
-
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            items.forEach(item => {
-                if (stadion === 'all' || item.classList.contains(stadion)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dinamo: {
+                            DEFAULT: '#0055ff',
+                            dark: '#0033aa',
+                            glow: '#00a2ff',
+                            accent: '#102a6b',
+                            bg: '#080a10',
+                            card: '#111522',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
                 }
-            });
+            }
         }
     </script>
-</body>
-</html>
+
+    <style>
+        body {
+            background-color: #080a10;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-heading {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(17, 21, 34, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(15, 20, 32, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 85, 255, 0.15);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 162, 255, 0.6);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 30px -10px rgba(0, 85, 255, 0.35), 0 0 20px 0 rgba(0, 162, 255, 0.2);
+        }
+
+        /* Electric Blue Glows */
+        .blue-glow-text {
+            text-shadow: 0 0 12px rgba(0, 162, 255, 0.7), 0 0 25px rgba(0, 85, 255, 0.5);
+        }
+
+        .blue-glow-box {
+            box-shadow: 0 0 25px rgba(0, 85, 255, 0.3), inset 0 0 15px rgba(0, 162, 255, 0.15);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080a10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0055ff;
+        }
+
+        /* Ambient pyro smoke animation */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 85, 255, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Watermark styling on Lightbox */
+        .watermark-overlay {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            user-select: none;
+            z-index: 10;
+        }
+
+        /* Pulse pyro animation */
+        @keyframes pyroPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.08); }
+        }
+        .pyro-glow {
+            animation: pyroPulse 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern min-h-screen flex flex-col justify-between selection:bg-dinamo selection:text-white">
+
+    <!-- TOP NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO & BRANDING -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="filterByStadium('all')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-dinamo via-blue-600 to-indigo-900 p-0.5 shadow-lg shadow-dinamo/30 flex items-center justify-center">
+                    <div class="w-full h-full bg-dinamo-bg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-camera-retro text-dinamo-glow text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-heading text-xl sm:text-2xl font-black tracking-wider text-white flex items-center gap-2">
+                        BBB <span class="text-dinamo-glow blue-glow-text">TRIBINA</span>
+                    </span>
+                    <p class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold">Ultras Matchday Photography</p>
+                </div>
+            </div>
+
+            <!-- SEARCH BAR (Desktop) -->
+            <div class="hidden md:flex items-center relative w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-sm"></i>
+                <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Pretraži utakmicu, npr. Hajduk..." 
+                       class="w-full bg-slate-900/90 border border-slate-700/80 rounded-full py-2 pl-10 pr-4 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-dinamo focus:ring-1 focus:ring-dinamo transition-all">
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="flex items-center gap-3">
+                <button onclick="openUploadModal()" class="px-4 py-2.5 rounded-full bg-gradient-to-r from-dinamo to-blue-600 hover:from-blue-600 hover:to-dinamo-glow text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-dinamo/20 hover:shadow-dinamo/40 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+                    <span class="hidden sm:inline">Nova Utakmica</span>
+                </button>
+
+                <button onclick="openAboutModal()" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-all" title="O Fotografu">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-12 lg:py-16 overflow-hidden">
+        <!-- Ambient Glowing Orbs -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-dinamo/20 rounded-full blur-[120px] pointer-events-none pyro-glow"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dinamo/10 border border-dinamo/30 text-dinamo-glow text-xs font-semibold uppercase tracking-widest mb-4">
+                <span class="w-2 h-2 rounded-full bg-dinamo-glow animate-ping"></span>
+                Službena Galerija Navijača & Tribina
+            </div>
+            
+            <h1 class="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-none mb-4">
+                ATMOSFERA. KOREOGRAFIJE. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-dinamo-glow via-blue-400 to-indigo-300 blue-glow-text">
+                    LJUBAV PREMA KLUTU.
+                </span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base mb-8">
+                Ekskluzivne fotografije Bad Blue Boysa s domaćih i gostujućih utakmica. Odaberite stadion ispod i doživite navijačku strast kroz visoku rezoluciju.
+            </p>
+
+            <!-- STATS COUNTER BAR -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto p-4 rounded-2xl glass-panel">
+                <div class="text-center p-2 border-r border-slate-800 last:border-none">
+                    <span class="font-heading text-xl sm:text-2xl font-bold text-dinamo-glow" id="statMatches">24</span>
+                    <p class="text-[11px] text-slate-400 uppercase font-semibold">Utakmica</p>
+                </div>
+                <div class="text-center p-2 border-r border-slate-800 last:border-none">
+                    <span class="font-heading text-xl sm:text-2xl font-bold text-dinamo-glow" id="statPhotos">380+</span>
+                    <p class="text-[11px] text-slate-400 uppercase font-semibold">Fotografija</p>
+                </div>
+                <div class="text-center p-2 border-r border-slate-800 last:border-none">
+                    <span class="font-heading text-xl sm:text-2xl font-bold text-dinamo-glow">6</span>
+                    <p class="text-[11px] text-slate-400 uppercase font-semibold">Stadiona</p>
+                </div>
+                <div class="text-center p-2">
+                    <span class="font-heading text-xl sm:text-2xl font-bold text-dinamo-glow">100%</span>
+                    <p class="text-[11px] text-slate-400 uppercase font-semibold">BBB Navijanje</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STADIUM FILTERS SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sticky top-20 z-30 bg-dinamo-bg/80 backdrop-blur-md py-4 rounded-2xl border border-slate-800/60">
+        
+        <div class="flex items-center justify-between gap-4 mb-3 sm:hidden">
+            <span class="text-xs text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-filter text-dinamo mr-1.5"></i> Filtriraj Stadion</span>
+            <!-- Mobile Search -->
+            <input type="text" onkeyup="handleSearch()" id="mobileSearchInput" placeholder="Traži..." class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1 text-xs text-white focus:outline-none focus:border-dinamo">
+        </div>
+
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="stadiumFilters">
+            <button onclick="filterByStadium('all')" data-stadium="all" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-dinamo text-white shadow-lg shadow-dinamo/30">
+                <i class="fa-solid fa-border-all mr-1.5"></i> Svi Stadioni
+            </button>
+            <button onclick="filterByStadium('maksimir')" data-stadium="maksimir" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700">
+                <i class="fa-solid fa-stadium mr-1.5"></i> Maksimir
+            </button>
+            <button onclick="filterByStadium('poljud')" data-stadium="poljud" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700">
+                <i class="fa-solid fa-location-dot mr-1.5"></i> Poljud
+            </button>
+            <button onclick="filterByStadium('opus')" data-stadium="opus" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700">
+                <i class="fa-solid fa-shield-halved mr-1.5"></i> Opus Arena
+            </button>
+            <button onclick="filterByStadium('rujevica')" data-stadium="rujevica" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700">
+                <i class="fa-solid fa-[#00a2ff] mr-1.5"></i> Rujevica
+            </button>
+            <button onclick="filterByStadium('europa')" data-stadium="europa" class="stadium-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700">
+                <i class="fa-solid fa-earth-europe mr-1.5"></i> Europa Gostač
+            </button>
+        </div>
+    </section>
+
+    <!-- MATCHES GALLERY GRID -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 flex-grow">
+        <div id="matchesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Dynamic Javascript Insertion Here -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-800 flex items-center justify-center text-slate-500 text-2xl">
+                <i class="fa-solid fa-camera-slash"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-300 mb-1">Nema pronađenih utakmica</h3>
+            <p class="text-xs text-slate-500">Pokušajte promjeniti filter ili pojam za pretraživanje.</p>
+        </div>
+    </main>
+
+    <!-- ADVANCED LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex-col justify-between transition-all duration-300 opacity-0">
+        
+        <!-- Lightbox Top Navigation Bar -->
+        <div class="p-4 sm:p-6 glass-panel border-b border-slate-800 flex items-center justify-between gap-4 z-20">
+            <div class="flex items-center gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-dinamo-glow animate-pulse"></span>
+                <div>
+                    <h3 id="lbTitle" class="font-heading text-sm sm:text-base font-bold text-white uppercase tracking-wider">Dinamo vs Hajduk</h3>
+                    <p id="lbSubtitle" class="text-xs text-slate-400 font-medium">Stadion Maksimir &bull; 14. Područje</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 text-dinamo-glow border border-slate-700">
+                    <span id="lbCurrentIndex">1</span> / <span id="lbTotalCount">12</span>
+                </div>
+
+                <button onclick="toggleFullscreen()" class="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-dinamo text-slate-300 hover:text-white flex items-center justify-center transition-all" title="Cijeli Ekran">
+                    <i class="fa-solid fa-expand text-sm"></i>
+                </button>
+
+                <button onclick="downloadActivePhoto()" class="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-dinamo text-slate-300 hover:text-white flex items-center justify-center transition-all" title="Preuzmi Fotografiju">
+                    <i class="fa-solid fa-download text-sm"></i>
+                </button>
+
+                <button onclick="closeLightbox()" class="w-9 h-9 rounded-lg bg-red-600/80 hover:bg-red-600 text-white flex items-center justify-center transition-all ml-2" title="Zatvori (Esc)">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lightbox Main Stage (Photo Display Area) -->
+        <div class="relative flex-grow flex items-center justify-center p-4 sm:p-8 select-none overflow-hidden">
+            
+            <!-- Left Arrow Button -->
+            <button onclick="prevPhoto()" class="absolute left-4 sm:left-8 z-30 w-12 h-12 rounded-full glass-panel hover:bg-dinamo text-white flex items-center justify-center text-lg transition-all transform hover:scale-110 active:scale-95 shadow-xl">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Main Photo Wrapper -->
+            <div class="relative max-w-full max-h-[75vh] flex items-center justify-center">
+                <img id="lbMainImage" src="" alt="Pregled Fotografije" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl transition-all duration-300 opacity-0 scale-95">
+                
+                <!-- BAD BLUE BOYS WATERMARK OVERLAY -->
+                <div class="watermark-overlay">
+                    <i class="fa-solid fa-shield-halved text-dinamo-glow text-xs"></i>
+                    <span class="font-heading text-[11px] font-black tracking-widest text-white uppercase">BBB FOTO</span>
+                </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button onclick="nextPhoto()" class="absolute right-4 sm:right-8 z-30 w-12 h-12 rounded-full glass-panel hover:bg-dinamo text-white flex items-center justify-center text-lg transition-all transform hover:scale-110 active:scale-95 shadow-xl">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Lightbox Bottom Thumbnails Strip -->
+        <div class="p-4 glass-panel border-t border-slate-800 z-20">
+            <div id="lbThumbnailsContainer" class="flex items-center justify-center gap-2 overflow-x-auto py-1 scrollbar-none">
+                <!-- Thumbnails injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- UPLOAD / ADD MATCH MODAL -->
+    <div id="uploadModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-xl rounded-2xl border border-slate-700/80 p-6 sm:p-8 relative shadow-2xl animate-fade-in">
+            <button onclick="closeUploadModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-dinamo/20 text-dinamo-glow border border-dinamo/40 flex items-center justify-center text-lg font-bold">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-lg font-bold text-white uppercase">Dodaj Novu Utakmicu</h2>
+                    <p class="text-xs text-slate-400">Simulacija prebacivanja fotografija iz Lightrooma</p>
+                </div>
+            </div>
+
+            <form onsubmit="handleUploadSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Naziv Utakmice</label>
+                    <input type="text" id="upTitle" required placeholder="npr. Dinamo Zagreb vs. Hajduk Split" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-dinamo">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Stadion</label>
+                        <select id="upStadium" required class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-dinamo">
+                            <option value="maksimir">Stadion Maksimir</opti
