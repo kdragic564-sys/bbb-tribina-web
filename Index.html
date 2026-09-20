@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribina Foto - BBB Galerija</title>
+    <!-- SimpleLightbox CSS za pop-up pregled -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f1115; color: #fff; padding: 20px; }
+        
+        header { text-align: center; padding: 20px 0 30px; }
+        h1 { font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; color: #3b82f6; }
+        p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+
+        /* Gumbi za stadione */
+        .filter-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .btn { background: #1f2937; color: #fff; border: 1px solid #374151; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn.active, .btn:hover { background: #3b82f6; border-color: #3b82f6; }
+
+        /* Mreža utakmica */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        
+        .match-card { background: #1a202c; border-radius: 12px; overflow: hidden; display: block; text-decoration: none; border: 1px solid #2d3748; transition: transform 0.2s; }
+        .match-card:hover { transform: translateY(-5px); }
+        .match-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .match-info { padding: 15px; }
+        .match-info h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .match-info span { font-size: 0.85rem; color: #9ca3af; text-transform: uppercase; }
+
+        /* Sakrivene ostale fotke iz iste galerije za Lightbox */
+        .hidden-photos { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TRIBINA FOTO</h1>
+        <p>Bad Blue Boys — Galerija po stadionima</p>
+    </header>
+
+    <!-- Navigacija po stadionima -->
+    <div class="filter-buttons">
+        <button class="btn active" onclick="filterStadion('all')">SVE</button>
+        <button class="btn" onclick="filterStadion('maksimir')">MAKSIMIR</button>
+        <button class="btn" onclick="filterStadion('poljud')">POLJUD</button>
+        <button class="btn" onclick="filterStadion('opus')">OPUS ARENA</button>
+    </div>
+
+    <!-- Mreža s utakmicama -->
+    <div class="gallery-grid">
+
+        <!-- UTAKMICA 1: MAKSIMIR -->
+        <div class="match-box maksimir">
+            <!-- Prva slika je naslovna fotka utakmice -->
+            <a href="slike/maksimir1-1.jpg" class="match-card match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 1">
+                <img src="slike/maksimir1-1.jpg" alt="Dinamo - Hajduk">
+                <div class="match-info">
+                    <span>Stadion Maksimir</span>
+                    <h3>Dinamo - Hajduk (2:1)</h3>
+                </div>
+            </a>
+            <!-- Ostale fotke s te utakmice koje se otvaraju u Lightboxu (1, 2, 3...) -->
+            <div class="hidden-photos">
+                <a href="slike/maksimir1-2.jpg" class="match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 2"></a>
+                <a href="slike/maksimir1-3.jpg" class="match-gallery" data-lightbox="dinamo-hajduk" title="Dinamo - Hajduk | Slika 3"></a>
+            </div>
+        </div>
+
+        <!-- UTAKMICA 2: POLJUD -->
+        <div class="match-box poljud">
+            <a href="slike/poljud1-1.jpg" class="match-card match-gallery" data-lightbox="hajduk-dinamo" title="Hajduk - Dinamo | Slika 1">
+                <img src="slike/poljud1-1.jpg" alt="Hajduk - Dinamo">
+                <div class="match-info">
+                    <span>Stadion Poljud</span>
+                    <h3>Hajduk - Dinamo (0:1)</h3>
+                </div>
+            </a>
+            <div class="hidden-photos">
+                <a href="slike/poljud1-2.jpg" class="match-gallery" data-lightbox="hajduk-dinamo" title="Hajduk - Dinamo | Slika 2"></a>
+            </div>
+        </div>
+
+        <!-- UTAKMICA 3: OPUS ARENA -->
+        <div class="match-box opus">
+            <a href="slike/opus1-1.jpg" class="match-card match-gallery" data-lightbox="osijek-dinamo" title="Osijek - Dinamo | Slika 1">
+                <img src="slike/opus1-1.jpg" alt="Osijek - Dinamo">
+                <div class="match-info">
+                    <span>Opus Arena</span>
+                    <h3>Osijek - Dinamo (1:3)</h3>
+                </div>
+            </a>
+            <div class="hidden-photos">
+                <a href="slike/opus1-2.jpg" class="match-gallery" data-lightbox="osijek-dinamo" title="Osijek - Dinamo | Slika 2"></a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Skripte za Lightbox i Filtriranje -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>
+    <script>
+        // Pokretanje Lightbox prikaza (prelistavanje 1, 2, 3...)
+        var lightbox = new SimpleLightbox('.match-gallery', {
+            captionsData: 'title',
+            captionDelay: 250
+        });
+
+        // Funkcija za filtriranje po stadionima
+        function filterStadion(stadion) {
+            var items = document.querySelectorAll('.match-box');
+            var buttons = document.querySelectorAll('.btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (stadion === 'all' || item.classList.contains(stadion)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
